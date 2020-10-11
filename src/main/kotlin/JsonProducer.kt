@@ -12,6 +12,12 @@ import mu.KotlinLogging
 
 import java.util.*
 
+// --zookeeper localhost:2181 --create --topic lowercase --replication-factor 1 --partitions 4
+fun main(args: Array<String>) {
+    println("Starting msg-console...")
+    JsonProducer("localhost:9092").produce(2)
+}
+
 class JsonProducer(brokers: String) {
     private val logger = KotlinLogging.logger {}
     private val producer = createProducer(brokers)
